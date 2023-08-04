@@ -15,7 +15,7 @@ export default function ProductList() {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Vehicle Brand</Table.HeaderCell>
+            <Table.HeaderCell>Vehicle Brands</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
