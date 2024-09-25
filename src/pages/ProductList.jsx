@@ -11,11 +11,17 @@ import {
   Label,
   Menu,
   Table,
+  Button,
 } from 'semantic-ui-react'
 import ProductApi from '../api/ProductApi'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../store/actions/cartActions'
+import {toast } from "react-toastify"
 
 export default function ProductList() {
+
+    const dispatch = useDispatch()
 
     const [products, setProducts] = useState([])
 
@@ -24,7 +30,10 @@ export default function ProductList() {
         productApi.getProducts().then(product => setProducts(product.data))
     }, [])
 
-    
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product));
+        toast.success(`Ürün ${product.productName} sepete eklendi`)
+    }
 
     return(
         <div>
@@ -34,6 +43,7 @@ export default function ProductList() {
         <TableHeaderCell>Ürün Adı</TableHeaderCell>
         <TableHeaderCell>Birim Fiyatı</TableHeaderCell>
         <TableHeaderCell>Ürün Açıklaması</TableHeaderCell>
+        <TableHeaderCell></TableHeaderCell>
       </TableRow>
     </TableHeader>
 
@@ -44,6 +54,7 @@ export default function ProductList() {
                 <TableCell><Link to={`/products/${product.id}`}>{product.productName}</Link></TableCell>
                 <TableCell>{product.unitPrice}</TableCell>
                 <TableCell>{product.information}</TableCell>
+                <TableCell><Button onClick={() => handleAddToCart(product)}>Sepete Ekle</Button></TableCell>
               </TableRow>
             ) )
         }

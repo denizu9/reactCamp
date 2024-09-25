@@ -1,5 +1,5 @@
 
-export const cartItems = [{quantity:1, product: {productName:"Çubuk Kraker"}}]
+export const cartItems = []
 
 // default değeri direkt 1 adet çubuk kraker verdik. Yani initial state'imiz 1 adet çubuk kraker objesi.
 // Array içerisinde tek bir adet objemiz var. Burada objeler ile çalıştığımız için, initial state'i yani burayı kullandığımız 
